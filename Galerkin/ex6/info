@@ -1,0 +1,65 @@
+
+#To compile the code due the following in a  terminal/Konsole/shell
+# use cd to enter the main folder of the program
+
+
+
+# first of all create the function spaces and forms by using the 
+# ffc compiler of fenics by typing
+
+ffc -l dolfin -O ex6_sys.ufl
+
+# this creates a file ex6_sys.h that contains the description of 
+# finite elements and forms for the Poisson problem.
+# whenever you change the file ex6_sys.ufl you have to rerun ffc
+
+
+
+#next create the makefile that tells the compiler how to build the programm.
+
+# enter the directory make
+# in this directory the information is found how the program is built out of the
+# source files
+
+#type (note the '.' at the end):
+cmake .
+
+# this will generate a bunch of files, where the Makefile is the most important for us.
+# after the Makefile is created you do not need to type this again (also not after you changed the *.ufl file)
+ 
+# to compile the programm type:
+make 
+
+# this will create the program (e.g. ex2 if you did not change the 
+# variable PROJECT_NAME in ProjectSpecificData)
+
+# you can run the code by typing
+./ex6
+
+
+
+# You have to change parts of the *.cpp file as marked in this file.
+
+# A note to users of Eclipse:
+# under properties->C/C++ build  of your project you find the points
+# 'Makefile generation' and 'build location'
+# uncheck the box 'Generate Makefile automatically'
+# and state the path to the Makefile generated with cmake under 'Build Directory'
+# now you can compile the code using Eclipse
+
+#it is recommended to use Eclipse
+
+
+
+cd
+cd Desktop/Exerc6/
+ffc -l dolfin -O ex6_sys.ufl
+cd make
+cmake . 
+make
+./ex6
+
+
+
+
+

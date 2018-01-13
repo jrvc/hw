@@ -1,0 +1,45 @@
+
+
+
+
+
+
+# the function space is based on triangles
+element = triangle
+
+
+FE1 = FiniteElement("Lagrange",element,1);
+
+
+#########################################
+
+
+
+# define test and Ansatz functions
+c_t = TestFunction(FE1)
+c_a = TrialFunction(FE1)
+
+f = Coefficient(FE1);
+
+u1 = Coefficient(FE1);
+u2 = Coefficient(FE1);
+
+#############################
+
+
+a = inner(grad(c_a),grad(c_t))*dx
+
+f = f*c_t*dx
+
+
+diff_L2 = (u1-u2)*(u1-u2)*dx
+
+diff_H10 = inner(grad(u1-u2),grad(u1 - u2))*dx
+
+
+
+###########################
+
+forms = [a,f, diff_L2, diff_H10]
+
+
