@@ -1,2 +1,2 @@
 # hw
-still deciding 
+folder for homeworks 
